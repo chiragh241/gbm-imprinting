@@ -1,0 +1,21 @@
+# Rice WGBS read processing (13_rice/01-05): Bismark with Bowtie2, Trim Galore's cutadapt,
+# SNPsplit, and the resequencing SNP calls (Bowtie2, samtools, bcftools). Tonosaki et al. used
+# Cutadapt 1.17 + Trimmomatic 0.36, Bismark 0.22.3 and SNPsplit 0.3.2; these are the bioconda
+# releases the published results were produced with. The per-gene tables and the figure run in
+# gi_analysis.
+name: gi_rice
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - bismark=0.24.2
+  - bowtie2=2.5.4
+  - samtools=1.21
+  - bcftools=1.21
+  - htslib=1.21
+  - snpsplit=0.6.0
+  - trim-galore=0.6.10
+  - cutadapt=5.2
+  - sra-tools=3.1.1
+  - pigz=2.8
+  - python=3.12.14

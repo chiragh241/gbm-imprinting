@@ -1,0 +1,17 @@
+--- a/bin/bs_seeker2-call_methylation.py
++++ b/bin/bs_seeker2-call_methylation.py
+@@ -229,7 +229,13 @@
+     #
+     cnts = lambda d: '\t'.join(str(d[n]) for n in nucs)
+     #
+-    for col in sorted_input.pileup(max_depth=PileupMaxDepth):
++    # PATCHED 2026-08-11: pysam 0.20 defaults ignore_orphans=True, which drops every read whose
++    # 0x2 proper-pair flag is unset. BS-Seeker2 never sets 0x2 (bowtie2 ran --no-mixed
++    # --no-discordant, so the pairs ARE concordant, the writer just omits the flag), so the
++    # default silently yielded ZERO pileup columns and wrote an empty ATCGmap while exiting 0.
++    # min_base_quality=0 because BS-Seeker2 aligns from FASTA: QUAL is '*' for every record.
++    # Both restore the pysam-0.7.7 semantics this tool was written against.
++    for col in sorted_input.pileup(max_depth=PileupMaxDepth, ignore_orphans=False, min_base_quality=0):
+         col_chrom = sorted_input.getrname(col.tid)
+         col_pos = col.pos
+         if chrom != col_chrom:

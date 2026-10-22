@@ -1,0 +1,13 @@
+run	type	alt	mother	father	rep	source
+DRR425633	wgbs	9311	NIP	9311	1	DRA015356 NIP-9311, 5dap endosperm, rep 1
+DRR425637	wgbs	9311	9311	NIP	1	DRA015356 9311-NIP, 5dap endosperm, rep 1
+DRR425631	wgbs	KAS	NIP	KAS	1	DRA015356 NIP-KAS, 5dap endosperm, rep 1
+DRR425635	wgbs	KAS	KAS	NIP	1	DRA015356 KAS-NIP, 5dap endosperm, rep 1
+DRR425634	wgbs	9311	NIP	9311	2	DRA015356 NIP-9311, 5dap endosperm, rep 2
+DRR425638	wgbs	9311	9311	NIP	2	DRA015356 9311-NIP, 5dap endosperm, rep 2
+DRR425632	wgbs	KAS	NIP	KAS	2	DRA015356 NIP-KAS, 5dap endosperm, rep 2
+DRR425636	wgbs	KAS	KAS	NIP	2	DRA015356 KAS-NIP, 5dap endosperm, rep 2
+DRR013715	reseq	KAS	.	.	.	Kasalath whole genome sequencing (Tonosaki Supplementary Data 1)
+DRR013716	reseq	KAS	.	.	.	Kasalath whole genome sequencing (Tonosaki Supplementary Data 1)
+SRR933668	reseq	9311	.	.	.	93-11 whole genome sequencing (Tonosaki Supplementary Data 1)
+SRR933669	reseq	9311	.	.	.	93-11 whole genome sequencing (Tonosaki Supplementary Data 1)

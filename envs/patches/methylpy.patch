@@ -1,0 +1,77 @@
+methylpy 1.4.7 (bioconda) as the EM-seq libraries were processed, with cutadapt 5.2 and
+Picard 3.4.0. Applied by envs/setup_envs.sh. Three changes:
+  1. cutadapt is no longer given "-f <format>": cutadapt 2.0 removed the option and detects
+     the format itself. Unpatched, every trimming call fails and methylpy stops.
+  2. cutadapt is no longer given "--quality-base": methylpy always passes 33, which is
+     cutadapt's default, so this changes nothing.
+  3. Before Picard MarkDuplicates, a default read group is added with samtools addreplacerg:
+     methylpy's BAMs have none, and Picard 3 MarkDuplicates fails on paired reads without one.
+
+--- a/methylpy/call_mc_pe.py
++++ b/methylpy/call_mc_pe.py
+@@ -1206,7 +1206,7 @@
+         zero = ""  
+     
+     if input_format:
+-        options += " -f " + input_format
++        options += ""  # patched: cutadapt>=2.0 auto-detects format (-f removed)
+     if error_rate:
+         options += " -e " + str(error_rate)
+     if max_adapter_removal:
+@@ -1218,7 +1218,7 @@
+     if min_qual_score:
+         options += " -q " + str(min_qual_score)
+     if quality_base:
+-        options += " --quality-base=" + str(quality_base)
++        options += ""  # patched: dropped; methylpy always passes 33, cutadapt's default
+     options += " -a " + adapter_seq_read1
+     options += " -A " + adapter_seq_read2
+     options += " " + zero
+--- a/methylpy/call_mc_se.py
++++ b/methylpy/call_mc_se.py
+@@ -1291,7 +1291,7 @@
+         zero = ""  
+     
+     if input_format:
+-        options += " -f " + input_format
++        options += ""  # patched: cutadapt>=2.0 auto-detects format (-f removed)
+     if error_rate:
+         options += " -e " + str(error_rate)
+     if max_adapter_removal:
+@@ -1303,7 +1303,7 @@
+     if min_qual_score:
+         options += " -q " + str(min_qual_score)
+     if quality_base:
+-        options += " --quality-base=" + str(quality_base)
++        options += ""  # patched: dropped; methylpy always passes 33, cutadapt's default
+     options += " -a " + adapter_seq
+     options += " " + zero
+     if num_procs > 1:
+@@ -1328,12 +1328,18 @@
+     to output_bam.
+     """
+     
++    # PATCH: methylpy's bowtie2 BAMs lack @RG; picard>=3 MarkDuplicates NPEs on
++    # paired reads without a read group. Inject a default read group first.
++    rg_bam = input_bam + ".rg.bam"
++    subprocess.check_call(shlex.split(
++        "samtools addreplacerg -r ID:meth -r SM:meth -r LB:meth -r PL:illumina "
++        + "-o " + rg_bam + " " + input_bam))
+     subprocess.check_call(
+         shlex.split(
+             " ".join(["java",java_options,
+                       "-jar",
+                       path_to_picard+"/picard.jar MarkDuplicates",
+-                      "INPUT="+input_bam,
++                      "INPUT="+rg_bam,
+                       "OUTPUT="+output_bam,
+                       "ASSUME_SORTED=true",
+                       "REMOVE_DUPLICATES=true",
+@@ -1342,6 +1348,7 @@
+                       "QUIET=true"])
+         )
+     )
++    subprocess.check_call(["rm", rg_bam])
+     total_clonal = 0
+     with open(metric,'r') as f:
+         while True:

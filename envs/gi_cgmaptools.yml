@@ -1,0 +1,16 @@
+# CGmapTools 0.1.3 for SNV calling and allele-specific methylation from ATCGmap files.
+# CGmapTools is not packaged for conda: envs/setup_envs.sh checks out the exact commit used.
+#
+# cgmaptools asm (ASM.pl) calls whichever samtools and R are first on PATH: samtools to read the
+# reference, R for its per-site Fisher tests. The published run used samtools 1.22.1 and
+# R 4.6.0, so both are pinned here rather than left to the system.
+name: gi_cgmaptools
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.11.9
+  - perl=5.32.1
+  - git
+  - samtools=1.22.1
+  - r-base=4.6.0

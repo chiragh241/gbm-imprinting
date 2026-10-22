@@ -1,0 +1,12 @@
+# Allele-resolved EM-seq: bisulfite alignment and methylation calling with BS-Seeker2,
+# which needs Python 2.7.
+name: gi_bsseeker2
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=2.7.15
+  - bs-seeker2=2.1.7
+  - bowtie2=2.5.4
+  - samtools=1.18
+  - pysam=0.20.0

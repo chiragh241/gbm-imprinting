@@ -1,0 +1,31 @@
+# Everything downstream of read processing: imprinting calls (R), gene sets, statistics,
+# binning and profiles (bedtools), and every figure.
+#
+# The Python packages come from pip, pinned to the versions used.
+# The figures use Arial, which is not free software: on Linux install it separately (for example
+# the ttf-mscorefonts-installer package, or copy arial*.ttf into ~/.local/share/fonts) before
+# drawing figures. The figure scripts stop with a message if it is missing.
+name: gi_analysis
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.13.7
+  - pip
+  - bedtools=2.31.1
+  - samtools=1.23.1
+  - wget
+  - r-base=4.5.1
+  - r-readr=2.2.0
+  - r-dplyr=1.2.1
+  - r-tidyr=1.3.2
+  - r-stringr=1.6.0
+  - pip:
+    - numpy==2.2.6
+    - pandas==2.2.3
+    - scipy==1.16.2
+    - matplotlib==3.10.6
+    - openpyxl==3.1.5
+    - xlrd==2.0.2
+    - pillow==11.3.0
+    - lxml==6.0.2

@@ -1,0 +1,11 @@
+srr	library	tissue	direction	rep	role
+SRR22950172	bxw_endo_rep1	endosperm	B73xW22	1	orig
+SRR22950171	bxw_endo_rep2	endosperm	B73xW22	2	orig
+SRR22950170	bxw_endo_rep2	endosperm	B73xW22	2	reseq
+SRR22950196	bxw_endo_rep3	endosperm	B73xW22	3	orig
+SRR22950195	bxw_endo_rep3	endosperm	B73xW22	3	reseq
+SRR22950194	wxb_endo_rep1	endosperm	W22xB73	1	orig
+SRR22950193	wxb_endo_rep2	endosperm	W22xB73	2	orig
+SRR22950192	wxb_endo_rep2	endosperm	W22xB73	2	reseq
+SRR22950191	wxb_endo_rep3	endosperm	W22xB73	3	orig
+SRR22950190	wxb_endo_rep3	endosperm	W22xB73	3	reseq

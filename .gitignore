@@ -1,0 +1,14 @@
+# Everything a run produces lives outside the repository (GI_RUN, see config.sh).
+# These patterns catch a run pointed at the repository by mistake.
+/run/
+/work/
+/results/
+*.bam
+*.bai
+*.fastq.gz
+*.fq.gz
+*.allc.tsv.gz
+__pycache__/
+*.pyc
+.Rhistory
+.DS_Store

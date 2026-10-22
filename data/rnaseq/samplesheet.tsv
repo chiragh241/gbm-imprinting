@@ -1,0 +1,13 @@
+sample	cross	maternal_genome	paternal_genome	genotype	rep	run
+BM_r1	B73xMo17	B73_WT	Mo17	WT	1	SRR15032788
+BM_r2	B73xMo17	B73_WT	Mo17	WT	2	SRR15032786
+BM_r3	B73xMo17	B73_WT	Mo17	WT	3	SRR15032784
+bM_r1	zmros1abxMo17	B73_mut	Mo17	zmros1ab	1	SRR15032782
+bM_r2	zmros1abxMo17	B73_mut	Mo17	zmros1ab	2	SRR15032780
+bM_r3	zmros1abxMo17	B73_mut	Mo17	zmros1ab	3	SRR15032777
+MB_r1	Mo17xB73	Mo17	B73_WT	WT	1	SRR15032787
+MB_r2	Mo17xB73	Mo17	B73_WT	WT	2	SRR15032785
+MB_r3	Mo17xB73	Mo17	B73_WT	WT	3	SRR15032783
+Mb_r1	Mo17xzmros1ab	Mo17	B73_mut	zmros1ab	1	SRR15032781
+Mb_r2	Mo17xzmros1ab	Mo17	B73_mut	zmros1ab	2	SRR15032779
+Mb_r3	Mo17xzmros1ab	Mo17	B73_mut	zmros1ab	3	SRR15032776
